@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 接口-->
+<mapper namespace="com.hb.dao.UserDao">
+   <select id="getUserList" resultType="com.hb.pojo.User">
+       select  * from newstudy.user
+   </select>
+    <!--id 接口方法名
+    parameterType 数据类型
+    resultType 实体权限类名-->
+    <select id="getUserById" parameterType="int" resultType="com.hb.pojo.User">
+        select  * from newstudy.user where id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="com.hb.pojo.User">
+        insert  into newstudy.user(id,name,pwd) values(#{id},#{name},#{pwd})
+    </insert>
+
+    <update id="updateUser" parameterType="com.hb.pojo.User">
+        update newstudy.user set name=#{name},pwd=#{pwd} where id=#{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from newstudy.user where id=#{id}
+    </delete>
+</mapper>
